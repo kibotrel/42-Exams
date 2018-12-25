@@ -65,11 +65,3 @@ void	ft_print_memory(const void *addr, size_t size)
 		current_line++;
 	}
 }
-
-int	main(void)
-{
-	char *str = "ceci est un test qualitatif";
-
-	ft_print_memory(str, 24);
-	return (0);
-}
