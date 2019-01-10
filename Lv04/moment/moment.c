@@ -6,7 +6,7 @@
 /*   By: kibotrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 16:21:28 by kibotrel          #+#    #+#             */
-/*   Updated: 2018/12/14 18:26:01 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/01/10 12:45:43 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,110 +28,59 @@ int				ft_strlen(char *str)
 	return (i);
 }
 
-unsigned int	numlen(int nb)
+char			*small_itoa(unsigned int nb)
 {
-	unsigned int	size;
-
-	size = 1;
-	while (nb / 10)
-	{
-		nb /= 10;
-		size++;
-	}
-	return (size);
-}
-
-char			*ft_itoa(int nb)
-{
-	char			*str;
+	char			*value;
 	int				length;
-	long			n;
+	unsigned int	remaining;
 
-	length = numlen(nb);
-	n = nb;
-	if (!(str = (char*)malloc(sizeof(*str) * (length + 1))))
+	remaining = nb;
+	length = 1;
+	while (nb / 10 && length++)
+		nb /= 10;
+	if (!(value = (char*)malloc(sizeof(*value) * (length + 1))))
 		return (NULL);
-	str[length--] = '\0';
-	str[0] = '0';
-	while (n > 0)
+	value[length] = '\0';
+	value[0] = '0';
+	while (--length >= 0)
 	{
-		str[length--] = (n % 10) + '0';
-		n /= 10;
+		value[length] = (char)((remaining % 10) + '0');
+		remaining /= 10;
 	}
-	return (str);
+	return (value);
 }
 
-char			*ft_strcat(char *s1, char *s2)
+char			*ft_strjoin(char *s1, char *s2)
 {
 
 	int				i;
-	int				j;
+	char			*time;
 
-	i = ft_strlen(s1);
-	j = -1;
-	while (s2[++j])
-		s1[i + j] = s2[j];
-	s1[i + j] = '\0';
-	return (s1);
+	i = 0;
+	if (!(time = (char*)malloc(sizeof(*time) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	while (*s1)
+		time[i++] = *s1++;
+	while (*s2)
+		time[i++] = *s2++;;
+	time[i] = '\0';
+	return (time);
 }
 
-char			*moment(int nb)
+char			*moment(unsigned int duration)
 {
-	char			*number;
-	char			*str;
-	char			*ret;
-	if (nb == 0)
-		return (str = "0 seconds ago.");
-	else if (nb >= MONTH)
-	{
-		if (nb / MONTH <= 1)
-			return (str = "1 month ago.");
-		str = " months ago.";
-		number = ft_itoa(nb / MONTH);
-		ret = ft_strcat(number, str);
-		free(number);
-		return (ret);
-	}
-	else if (nb >= DAY)
-	{
-		if (nb / DAY <= 1)
-			return (str = "1 day ago.");
-		str = " days ago.";
-		number = ft_itoa(nb / DAY);
-		ret = ft_strcat(number, str);
-		free(number);
-		return (ret);
+	char			*time;
+	char			*value;
 
-	}
-	else if (nb >= HOUR)
-	{
-		if (nb / HOUR <= 1)
-			return (str = "1 hour ago.");
-		str = " hours ago.";
-		number = ft_itoa(nb / HOUR);
-		ret = ft_strcat(number, str);
-		free(number);
-		return (ret);
-	}
-	else if (nb >= MINUTE)
-	{
-		if (nb / MINUTE <= 1)
-			return (str = "1 minute ago.");
-		str = " minutes ago.";
-		number = ft_itoa(nb / MINUTE);
-		ret = ft_strcat(number, str);
-		free(number);
-		return (ret);
-	}
-	else if (nb >= SECOND)
-	{
-		if (nb / SECOND <= 1)
-			return (str = "1 second ago.");
-		str = " seconds ago.";
-		number = ft_itoa(nb / SECOND);
-		ret = ft_strcat(number, str);
-		free(number);
-		return (ret);
-	}
-	return (NULL);
+	if (duration >= MONTH)
+		return (time = ((duration / MONTH) <= 1 ? "1 month ago." : ft_strjoin(small_itoa(duration / MONTH), " months ago.")));
+	else if (duration >= DAY)
+		return (time = ((duration / DAY) <= 1 ? "1 day ago." : ft_strjoin(small_itoa(duration / DAY), " days ago.")));
+	else if (duration >= HOUR)
+		return (time = ((duration / HOUR) <= 1 ? "1 hour ago." : ft_strjoin(small_itoa(duration / HOUR), " hours ago.")));
+	else if (duration >= MINUTE)
+		return (time = ((duration / MINUTE) <= 1 ? "1 minute ago." : ft_strjoin(small_itoa(duration / MINUTE), " mintutes ago.")));
+	else if (duration >= SECOND)
+		return (time = ((duration / SECOND) <= 1 ? "1 second ago." : ft_strjoin(small_itoa(duration / SECOND), " seconds ago.")));
+	return (time = "0 seconds ago.");
 }
