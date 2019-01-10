@@ -1,4 +1,5 @@
 #include <unistd.h>
+#define MAX 238609294
 
 void	ft_putchar(char c)
 {
@@ -26,7 +27,6 @@ void	small_putnbr(int n)
 	}
 	else
 		ft_putchar(n + '0');
-
 }
 
 void	tab_mult(int base)
@@ -34,17 +34,16 @@ void	tab_mult(int base)
 	int	mult;
 
 	mult = 0;
-	if (base > 238609294)
-		return ;
-	while (++mult <= 9)
-	{
-		small_putnbr(mult);
-		write(1, " x ", 3);
-		small_putnbr(base);
-		write(1, " = ", 3);
-		small_putnbr(base * mult);
-		ft_putchar('\n');
-	}	
+	if (base <= MAX)
+		while (++mult <= 9)
+		{
+			small_putnbr(mult);
+			write(1, " x ", 3);
+			small_putnbr(base);
+			write(1, " = ", 3);
+			small_putnbr(base * mult);
+			ft_putchar('\n');
+		}	
 }
 
 int		main(int ac, char **av)
