@@ -1,58 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   biggest_pal.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/05 10:03:52 by exam              #+#    #+#             */
+/*   Updated: 2019/02/05 10:52:03 by exam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-int		ft_strlen(char *str)
+int		ft_strlen(char *s)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }
-
-int		is_pal(char *str, int start, int end)
+int		is_pal(char *s, int start, int end)
 {
-	while (start < end)
-		if (str[start++] != str[end--])
+	while(start < end)
+		if (s[start++] != s[end--])
 			return (0);
 	return (1);
 }
-
-void	tmp_pal(char *str, char tmp[2048], int start, int end)
+void	biggest_pal(char *s)
 {
-	int	i;
+	int		end;
+	int		save;
+	int		size;
+	int		start;
 
-	i = -1;
-	while (++i < 2048)
-		tmp[i] = 0;
-	i = 0;
-	while (start <= end)
-		tmp[i++] = str[start++];
-}
-void	biggest_pal(char *str)
-{
-	int	biggest;
-	int	start;
-	int	end;
-	int	size;
-	char tmp[2048];
-
-	start = -1;
-	biggest = ft_strlen(str);
-	while (str && str[++start])
+	size = ft_strlen(s) - 1;
+	save = 0;
+	start = 0;
+	while (s[start])
 	{
-		end = 0 + start;
-		while (end <= biggest)
+		end = size;
+		while (start >= 0)
 		{
-			if (is_pal(str, start, end) && (end - start + 1) >= size)
+			if (is_pal(s, start, end))
 			{
-				size = end - start + 1;
-				tmp_pal(str, tmp, start, end);
+				while (start <= end)
+					write(1, &s[start++], 1);
+				return;
 			}
-			end++;
+			else
+			{
+				start--;
+				end--;
+			}
 		}
+		save++;
+		start = save;
+
 	}
-	write(1, tmp, ft_strlen(tmp));
 }
 
 int		main(int ac, char **av)
