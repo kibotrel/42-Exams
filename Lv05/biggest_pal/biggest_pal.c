@@ -6,11 +6,12 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 10:03:52 by exam              #+#    #+#             */
-/*   Updated: 2019/02/05 10:52:03 by exam             ###   ########.fr       */
+/*   Updated: 2019/02/25 23:30:31 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "biggest_pal.h"
 
 int		ft_strlen(char *s)
 {
@@ -28,43 +29,44 @@ int		is_pal(char *s, int start, int end)
 			return (0);
 	return (1);
 }
-void	biggest_pal(char *s)
-{
-	int		end;
-	int		save;
-	int		size;
-	int		start;
 
-	size = ft_strlen(s) - 1;
-	save = 0;
-	start = 0;
-	while (s[start])
+t_str	init_struct(char *s)
+{
+	t_str	pal;
+
+	pal.start = 0;
+	pal.save = 0;
+	pal.size = ft_strlen(s) - 1;
+	return (pal);
+}
+void	biggest_pal(char *s, t_str pal)
+{
+	while (s[pal.start])
 	{
-		end = size;
-		while (start >= 0)
+		pal.end = pal.size;
+		while (pal.start >= 0)
 		{
-			if (is_pal(s, start, end))
+			if (is_pal(s, pal.start, pal.end))
 			{
-				while (start <= end)
-					write(1, &s[start++], 1);
+				while (pal.start <= pal.end)
+					write(1, &s[pal.start++], 1);
 				return;
 			}
 			else
 			{
-				start--;
-				end--;
+				pal.start--;
+				pal.end--;
 			}
 		}
-		save++;
-		start = save;
-
+		pal.save++;
+		pal.start = pal.save;
 	}
 }
 
 int		main(int ac, char **av)
 {
 	if (ac == 2)
-		biggest_pal(av[1]);
+		biggest_pal(av[1], init_struct(av[1]));
 	write(1, "\n", 1);
 	return (0);
 }
