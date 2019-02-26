@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kibotrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:17:37 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/01/10 07:58:16 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 11:20:53 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	max(int *tab, unsigned int len)
 {
-	int max;
-	unsigned i;
+	int			max;
+	unsigned	i;
 
 	i = 0;
 	max = INT_MIN;
