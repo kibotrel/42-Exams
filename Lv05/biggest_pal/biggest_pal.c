@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   biggest_pal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: exam <exam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 10:03:52 by exam              #+#    #+#             */
-/*   Updated: 2019/02/25 23:30:31 by exam             ###   ########.fr       */
+/*   Updated: 2019/02/26 09:26:31 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int		ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
 int		is_pal(char *s, int start, int end)
 {
-	while(start < end)
+	while (start < end)
 		if (s[start++] != s[end--])
 			return (0);
 	return (1);
@@ -39,6 +40,7 @@ t_str	init_struct(char *s)
 	pal.size = ft_strlen(s) - 1;
 	return (pal);
 }
+
 void	biggest_pal(char *s, t_str pal)
 {
 	while (s[pal.start])
@@ -50,7 +52,7 @@ void	biggest_pal(char *s, t_str pal)
 			{
 				while (pal.start <= pal.end)
 					write(1, &s[pal.start++], 1);
-				return;
+				return ;
 			}
 			else
 			{
