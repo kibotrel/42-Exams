@@ -6,16 +6,17 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 02:18:24 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/01/16 02:21:03 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 09:21:41 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIST_H_
-#define  _LIST_H_
+#ifndef LIST_H
+# define LIST_H
 
-typedef struct	s_list
+typedef struct		s_list
 {
 	int				data;
 	struct s_list	*next;
 }					t_list;
+
 #endif
