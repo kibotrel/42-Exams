@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 06:44:54 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/02/01 07:03:36 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 09:18:17 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ int		rook(char **grid, int y, int x, int size)
 
 int		queen(char **grid, int y, int x, int size)
 {
-	return ((rook(grid, y, x, size) || bishop(grid, y, x, size) ? 1 ; 0);
+	return ((rook(grid, y, x, size) || bishop(grid, y, x, size) ? 1 : 0));
 }

@@ -6,14 +6,14 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 06:46:00 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/02/01 07:05:23 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 09:17:33 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "check_mate.h"
 
-int		is_piece(char c, int num)
+int			is_piece(char c, int num)
 {
 	int		i;
 	char	*pieces;
@@ -37,7 +37,6 @@ static char	*build_grid(char *av, int ac)
 		row[i] = (is_piece(av[i], 5) ? av[i] : '.');
 	row[i] = '\0';
 	return (row);
-
 }
 
 char		**parse(int size, char **av)

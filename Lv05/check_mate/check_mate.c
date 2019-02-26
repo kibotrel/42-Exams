@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 02:54:21 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/02/04 20:47:42 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 09:19:15 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	check(char **grid, int y, int x, int size)
 		return (1);
 	return (0);
 }
+
 int			solve(char **grid, int size)
 {
 	int		type;
