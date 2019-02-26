@@ -6,7 +6,7 @@
 /*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 13:52:52 by kibotrel          #+#    #+#             */
-/*   Updated: 2019/01/22 14:54:41 by kibotrel         ###   ########.fr       */
+/*   Updated: 2019/02/26 09:47:38 by kibotrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		numlen(int nbr)
 {
-	int 			size;
+	int				size;
 
 	size = 1;
 	if (nbr < 0)
