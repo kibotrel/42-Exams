@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_memory.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/26 09:15:06 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/02/26 09:15:50 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -20,7 +32,6 @@ void	prompt_hex(unsigned char hex)
 	base = "0123456789abcdef";
 	write(1, &base[hex / 16], 1);
 	write(1, &base[hex % 16], 1);
-	
 }
 
 void	translate_hex(unsigned char *string, size_t current_line, size_t size)
@@ -37,14 +48,13 @@ void	translate_hex(unsigned char *string, size_t current_line, size_t size)
 		else
 			write(1, "  ", 2);
 		i++;
-	}	
-
+	}
 }
 
 void	ft_print_memory(const void *addr, size_t size)
 {
-	size_t		current_line;
-	size_t		i;
+	size_t			current_line;
+	size_t			i;
 	unsigned char	*string;
 
 	current_line = 0;
