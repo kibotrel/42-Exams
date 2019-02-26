@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tab_mult.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/26 11:17:22 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/02/26 11:17:43 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #define MAX 238609294
 
 void	ft_putchar(char c)
 {
-	write (1, &c, 1);
+	write(1, &c, 1);
 }
 
 int		small_atoi(char *str)
@@ -43,7 +55,7 @@ void	tab_mult(int base)
 			write(1, " = ", 3);
 			small_putnbr(base * mult);
 			ft_putchar('\n');
-		}	
+		}
 }
 
 int		main(int ac, char **av)
