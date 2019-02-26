@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/26 11:19:34 by kibotrel          #+#    #+#             */
+/*   Updated: 2019/02/26 11:19:53 by kibotrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int	ft_strlen(char *str)
@@ -32,7 +44,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 3)
 		if (wdmatch(av[1], av[2]))
-				write(1, av[1], ft_strlen(av[1]));
+			write(1, av[1], ft_strlen(av[1]));
 	write(1, "\n", 1);
 	return (0);
 }
